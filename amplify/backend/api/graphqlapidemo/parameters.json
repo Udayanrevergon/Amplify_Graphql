@@ -2,5 +2,11 @@
   "AppSyncApiName": "graphqlapidemo",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2023-06-24T08:12:01.792Z"
+  "AuthModeLastUpdated": "2023-06-24T11:29:00.185Z",
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authgraphqlapidemo4549c0dd",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

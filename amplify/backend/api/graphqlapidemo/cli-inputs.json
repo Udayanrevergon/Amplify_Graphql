@@ -10,12 +10,16 @@
     },
     "conflictResolution": {
       "defaultResolutionStrategy": {
-        "type": "NONE"
+        "type": "AUTOMERGE"
       }
     },
     "additionalAuthTypes": [
       {
         "mode": "AWS_IAM"
+      },
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authgraphqlapidemo4549c0dd"
       }
     ]
   }

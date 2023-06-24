@@ -26,7 +26,7 @@ export 'Todo.dart';
 
 class ModelProvider implements amplify_core.ModelProviderInterface {
   @override
-  String version = "4401034582a70c60713e1f7f9da3b752";
+  String version = "04526a84e6498c3af9924859598c0c41";
   @override
   List<amplify_core.ModelSchema> modelSchemas = [Todo.schema];
   @override

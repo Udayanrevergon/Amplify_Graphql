@@ -45,17 +45,8 @@ class Todo extends amplify_core.Model {
       );
   }
   
-  String get name {
-    try {
-      return _name!;
-    } catch(e) {
-      throw amplify_core.AmplifyCodeGenModelException(
-          amplify_core.AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
-          recoverySuggestion:
-            amplify_core.AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
-          underlyingException: e.toString()
-          );
-    }
+  String? get name {
+    return _name;
   }
   
   String? get description {
@@ -70,9 +61,9 @@ class Todo extends amplify_core.Model {
     return _updatedAt;
   }
   
-  const Todo._internal({required this.id, required name, description, createdAt, updatedAt}): _name = name, _description = description, _createdAt = createdAt, _updatedAt = updatedAt;
+  const Todo._internal({required this.id, name, description, createdAt, updatedAt}): _name = name, _description = description, _createdAt = createdAt, _updatedAt = updatedAt;
   
-  factory Todo({String? id, required String name, String? description}) {
+  factory Todo({String? id, String? name, String? description}) {
     return Todo._internal(
       id: id == null ? amplify_core.UUID.getUUID() : id,
       name: name,
@@ -118,7 +109,7 @@ class Todo extends amplify_core.Model {
   }
   
   Todo copyWithModelFieldValues({
-    ModelFieldValue<String>? name,
+    ModelFieldValue<String?>? name,
     ModelFieldValue<String?>? description
   }) {
     return Todo._internal(
@@ -155,11 +146,50 @@ class Todo extends amplify_core.Model {
     modelSchemaDefinition.name = "Todo";
     modelSchemaDefinition.pluralName = "Todos";
     
+    modelSchemaDefinition.authRules = [
+      amplify_core.AuthRule(
+        authStrategy: amplify_core.AuthStrategy.PUBLIC,
+        operations: const [
+          amplify_core.ModelOperation.CREATE,
+          amplify_core.ModelOperation.UPDATE,
+          amplify_core.ModelOperation.DELETE,
+          amplify_core.ModelOperation.READ
+        ]),
+      amplify_core.AuthRule(
+        authStrategy: amplify_core.AuthStrategy.OWNER,
+        ownerField: "owner",
+        identityClaim: "cognito:username",
+        provider: amplify_core.AuthRuleProvider.USERPOOLS,
+        operations: const [
+          amplify_core.ModelOperation.CREATE,
+          amplify_core.ModelOperation.UPDATE,
+          amplify_core.ModelOperation.DELETE,
+          amplify_core.ModelOperation.READ
+        ]),
+      amplify_core.AuthRule(
+        authStrategy: amplify_core.AuthStrategy.PRIVATE,
+        operations: const [
+          amplify_core.ModelOperation.CREATE,
+          amplify_core.ModelOperation.UPDATE,
+          amplify_core.ModelOperation.DELETE,
+          amplify_core.ModelOperation.READ
+        ]),
+      amplify_core.AuthRule(
+        authStrategy: amplify_core.AuthStrategy.PRIVATE,
+        provider: amplify_core.AuthRuleProvider.IAM,
+        operations: const [
+          amplify_core.ModelOperation.CREATE,
+          amplify_core.ModelOperation.UPDATE,
+          amplify_core.ModelOperation.DELETE,
+          amplify_core.ModelOperation.READ
+        ])
+    ];
+    
     modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.id());
     
     modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.field(
       key: Todo.NAME,
-      isRequired: true,
+      isRequired: false,
       ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.string)
     ));
     
