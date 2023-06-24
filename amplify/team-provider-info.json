@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-graphqlapidemo-dev-115609-authRole",
+      "UnauthRoleArn": "arn:aws:iam::083372995571:role/amplify-graphqlapidemo-dev-115609-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::083372995571:role/amplify-graphqlapidemo-dev-115609-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-graphqlapidemo-dev-115609-deployment",
+      "UnauthRoleName": "amplify-graphqlapidemo-dev-115609-unauthRole",
+      "StackName": "amplify-graphqlapidemo-dev-115609",
+      "StackId": "arn:aws:cloudformation:ap-south-1:083372995571:stack/amplify-graphqlapidemo-dev-115609/02d612b0-1258-11ee-ba35-06338a7be1fa",
+      "AmplifyAppId": "dk6aeu5nj1cj9"
+    },
+    "categories": {
+      "api": {
+        "graphqlapidemo": {}
+      }
+    }
+  }
+}

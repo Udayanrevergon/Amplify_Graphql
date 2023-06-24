@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "graphqlapidemo",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2023-06-24T08:12:01.792Z"
+}
