@@ -4,7 +4,6 @@ import 'package:graphqlapi/models/Todo.dart';
 
 Future<Todo> createTodo() async {
   final createdTodo = Todo(name: '');
-  ;
   try {
     final todo = Todo(name: 'my first todo', description: 'todo description');
     final request = ModelMutations.create(todo);
